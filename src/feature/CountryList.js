@@ -5,17 +5,18 @@ import {useSelector} from "react-redux"
 const CountryList = () => {
     const data = useSelector(allPosts);
     const fetchStatus = useSelector(status);
+    const errorCheck = useSelector(error)
     console.log(data);
     const countryCards = data.map((item) => {
         const {name, flags, population, region, capital} = item
         return (
           <div
             key={name.common}
-            className="border-2 dark:border-4 shadow-sm dark:bg-[#2B3743] dark:border-gray-800 text-sm text-black dark:text-slate-300"
+            className="border-2 shadow-md dark:bg-[#2B3743] dark:border-gray-800 text-sm text-black dark:text-slate-300"
           >
             <div>
               <img
-                className="h-[45%] w-full"
+                className="sm:h-32 h-36 w-full "
                 src={flags.png}
                 alt={name.common}
               />
@@ -41,11 +42,13 @@ const CountryList = () => {
         );
     })
   return (
-    <div className="h-full dark:bg-[#202D36] dark:text-white mx-auto md:px-16 px-6 font-medium bg-slate-100 sm:text-sm md:text-base">
-      <div className="py-6">Hello</div>
-      <div className="lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2 sm:gap-6 gap-8 grid max-w-5xl sm:px-0 px-12 mx-auto">
+      <div className="h-full dark:bg-[#202D36] dark:text-white mx-auto md:px-16 px-6 font-medium bg-slate-100 ">
+          { errorCheck !== null ? <div className='h-screen item-center text-center'>something went wrong</div> :
+              fetchStatus !== "succeeded" ? <div className='text-center items-center h-screen'>Loading...</div> :
+      <><div className="py-6">Hello</div>
+      <div className="lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2 sm:gap-6 gap-8 grid sm:px-0 px-12 ">
         {countryCards}
-      </div>
+      </div></> }
     </div>
   );
 }

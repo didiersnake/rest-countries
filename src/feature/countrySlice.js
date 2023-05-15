@@ -28,12 +28,13 @@ const countrySlice = createSlice({
           state.status = "loading";
         })
         .addCase(fetchCountries.fulfilled, (state, action) => {
-          state.status = "succeeded";
+          state.status = "succeeded";  
           state.posts = action.payload;
         })
         .addCase(fetchCountries.rejected, (state, action) => {
           state.status = "failed";
-          state.error = action.error.message;
+            state.error = action.error.message;
+            console.log(state.error)
         });
   }
 });
