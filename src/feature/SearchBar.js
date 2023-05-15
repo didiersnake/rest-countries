@@ -5,6 +5,7 @@ const SearchBar = ({ post, searchResult }) => {
     
     const [input, setInput] = useState("")
     const handleSubmit = (e) => e.preventDefault()
+    
     const handleSearchChange = e => {
       setInput(e.target.value);
 

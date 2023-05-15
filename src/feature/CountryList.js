@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { allPosts, error, status } from "./countrySlice";
+import React from "react";
+import {error, status } from "./countrySlice";
 import { useSelector } from "react-redux";
-import SearchBar from "./SearchBar";
 
-const CountryList = () => {
-  const data = useSelector(allPosts);
+const CountryList = ({searchResult}) => {
   const fetchStatus = useSelector(status);
   const errorCheck = useSelector(error);
-  const [searchResult, setSearchResult] = useState(data);
 
   const countryCards = searchResult.map((item) => {
     const { name, flags, population, region, capital } = item;
@@ -46,18 +43,15 @@ const CountryList = () => {
     );
   });
   return (
-    <div className="h-full dark:bg-[#202D36] dark:text-white mx-auto md:px-16 px-6 font-medium bg-slate-100 ">
+    <div>
       {errorCheck !== null ? (
         <div className="h-screen item-center text-center">
-          something went wrong
+          something went wrong...
         </div>
       ) : fetchStatus !== "succeeded" ? (
-        <div className="text-center items-center h-screen">Loading...</div>
+        <div className="text-center my-auto h-screen">Loading...</div>
       ) : (
         <>
-          <div className="py-6">
-            <SearchBar post={data} searchResult={setSearchResult} />
-          </div>
           <div className="lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2 sm:gap-6 gap-8 grid sm:px-0 px-12 ">
             {countryCards}
           </div>
