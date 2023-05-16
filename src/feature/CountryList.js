@@ -31,32 +31,33 @@ const CountryList = ({searchResult}) => {
             </p>
           </div>
           <div className="flex gap-1">
-            Region :{" "}
-            <p className="dark:text-gray-400 text-slate-500 ">{region}</p>
+            Region : <p className="dark:text-gray-400 text-slate-500 ">{region}</p>
           </div>
           <div className="flex gap-1">
-            Capital :{" "}
-            <p className="dark:text-gray-400 text-slate-500 ">{capital}</p>
+            Capital : <p className="dark:text-gray-400 text-slate-500 ">{capital}</p>
           </div>
         </div>
       </div>
     );
   });
+
+    
   return (
     <div>
-      {errorCheck !== null ? (
+          {
+              fetchStatus !== "succeeded" ?
+                  <div className="text-center my-auto h-screen">Loading...</div>
+                  :
+                  <>
+                      <div className="lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2 sm:gap-6 gap-8 grid sm:px-0 px-12 ">
+                          {countryCards}
+                      </div>
+                  </>
+          }
+        {searchResult.length === 0 ? 
         <div className="h-screen item-center text-center">
-          something went wrong...
-        </div>
-      ) : fetchStatus !== "succeeded" ? (
-        <div className="text-center my-auto h-screen">Loading...</div>
-      ) : (
-        <>
-          <div className="lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2 sm:gap-6 gap-8 grid sm:px-0 px-12 ">
-            {countryCards}
-          </div>
-        </>
-      )}
+          No resulting
+        </div>: ""}
     </div>
   );
 };
