@@ -20,7 +20,7 @@ function App() {
     <>
       <Navbar />
       <main className="min-h-screen dark:bg-[#202D36] dark:text-white mx-auto md:px-32 px-6 md:pb-12 pb-5 font-medium bg-slate-100 ">
-        <div className="flex justify-between items-center py-6 px-5">          
+        <div className="md:flex md:justify-between md:items-center grid py-6">          
           <SearchBar post={data} searchResult={setSearchResult} />
           <DropFilter post={data} searchResult={setSearchResult} />
         </div>
