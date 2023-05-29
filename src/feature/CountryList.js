@@ -44,20 +44,15 @@ const CountryList = ({searchResult}) => {
     
   return (
     <div>
-          {
-              fetchStatus !== "succeeded" ?
-                  <div className="text-center my-auto h-screen">Loading...</div>
-                  :
-                  <>
-                      <div className="lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2 sm:gap-6 gap-8 grid sm:px-0 px-12 ">
-                          {countryCards}
-                      </div>
-                  </>
-          }
-        {searchResult.length === 0 ? 
-        <div className="h-screen item-center text-center">
-          No resulting
-        </div>: ""}
+      {fetchStatus === "succeeded" ? (
+          <div className="lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-2 sm:gap-6 gap-8 grid sm:px-0 px-12 ">
+            {countryCards}
+          </div>    
+      ) : (
+        <>
+          <div className="text-center my-auto h-screen">Loading...</div>
+        </>
+      )}
     </div>
   );
 };

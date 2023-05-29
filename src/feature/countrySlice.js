@@ -39,7 +39,7 @@ const countrySlice = createSlice({
   }
 });
 
-
+export const selectByName = (state, post) => state.countries.posts.find((postName) => post.name.common === postName )
 export const error = (state) => state.countries.error;
 export const status = (state) => state.countries.status;
 export const allPosts = (state) => state.countries.posts;
