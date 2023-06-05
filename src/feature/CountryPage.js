@@ -16,7 +16,7 @@ const CountryPage = () => {
 
   const { name, flags, population, region, subregion, capital, borders, tld, languages, currencies } = countryPost;
   const lang = Object.values(languages)
-  const countryBorders = borders.map((item) => (
+  const countryBorders = borders?.map((item) => (
     <div key={item} className="capitalize bg-white dark:bg-[#2B3743] dark:text-gray-400 border-2 border-gray-200 dark:border-gray-800 shadow-md px-3 py-1 rounded-md">{item}</div>
   ));
   
