@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { allPosts } from "./feature/countrySlice";
 import { useSelector } from "react-redux";
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route, Navigate} from "react-router-dom";
 import Layout from "./Layout";
 import Home from "./Home";
 import CountryPage from "./feature/CountryPage";
@@ -30,6 +30,7 @@ function App() {
           }
         />
         <Route path=":countryName" element={<CountryPage />} />
+        <Route path="*" element={<Navigate to={"/"} replace />} />
       </Route>
     </Routes>
   );

@@ -1,16 +1,16 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectByName } from './countrySlice'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const CountryPage = () => {
   const { countryName } = useParams()
   const countryPost = useSelector((state) => selectByName(state, countryName))
   const backButton = (
     <div className="pb-10">
-      <button className="capitalize text-lg bg-white dark:bg-[#2B3743] dark:text-gray-400 border-2 border-gray-200 dark:border-gray-800 shadow-md px-4 py-1 rounded-md">
+      <Link to={"/"} className="capitalize text-lg bg-white dark:bg-[#2B3743] dark:text-gray-400 border-2 border-gray-200 dark:border-gray-800 shadow-md px-4 py-1 rounded-md">
         back
-      </button>
+      </Link>
     </div>
   );
 
