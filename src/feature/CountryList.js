@@ -1,6 +1,7 @@
 import React from "react";
 import {error, status } from "./countrySlice";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CountryList = ({searchResult}) => {
   const fetchStatus = useSelector(status);
@@ -9,7 +10,8 @@ const CountryList = ({searchResult}) => {
   const countryCards = searchResult.map((item) => {
     const { name, flags, population, region, capital } = item;
     return (
-      <div
+      <Link
+        to={name.common}
         key={name.common}
         className="border-2 shadow-md dark:bg-[#2B3743] dark:border-gray-800 text-sm text-black dark:text-slate-300"
       >
@@ -37,7 +39,7 @@ const CountryList = ({searchResult}) => {
             Capital : <p className="dark:text-gray-400 text-slate-500 ">{capital}</p>
           </div>
         </div>
-      </div>
+      </Link>
     );
   });
 

@@ -30,6 +30,7 @@ const countrySlice = createSlice({
         .addCase(fetchCountries.fulfilled, (state, action) => {
           state.status = "succeeded";  
           state.posts = action.payload;
+          console.log(state.posts)
         })
         .addCase(fetchCountries.rejected, (state, action) => {
           state.status = "failed";
@@ -39,7 +40,8 @@ const countrySlice = createSlice({
   }
 });
 
-export const selectByName = (state, post) => state.countries.posts.find((postName) => post.name.common === postName )
+export const selectByName = (state, postName) =>
+  state.countries.posts.find((post) => post.name.common === postName);
 export const error = (state) => state.countries.error;
 export const status = (state) => state.countries.status;
 export const allPosts = (state) => state.countries.posts;
